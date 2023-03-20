@@ -14,6 +14,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import Colors from '../constants/Colors';
 
 import ChatScreen from '../screens/Chat';
+import MenuScreen from '../screens/Menu';
 
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -36,8 +37,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName='Chat' screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName='Menu' screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Chat" component={ChatScreen} />
+      <Stack.Screen name="Menu" component={MenuScreen} />
     </Stack.Navigator>
   );
 }

@@ -42,7 +42,7 @@ export default function ChatScreen({}: RootTabScreenProps<'Chat'>) {
         <ReversedContainer>
             <UserInput onSend={onSend} />
             <MessageHistory messages={messages}/>
-            <Header title='Chat'/>
+            <Header title='Chat' backButton/>
         </ReversedContainer>
     )
 }

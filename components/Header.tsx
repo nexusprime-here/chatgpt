@@ -1,5 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import Constants from "expo-constants";
+import { rgba } from "polished";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
@@ -22,18 +23,21 @@ const Container = styled.View`
     flex-direction: row;
     align-items: center;
     backdrop-filter: blur(5px);
+    box-shadow: 0 0px 5px ${p => rgba(...p.theme.shadow as [number, number, number, number])};
 `
 
 const LeftSide = styled.View`width: 33%;`
 const Center = styled.View`width: 33%;`
 const RightSide = styled.View`width: 33%;`
 
-const Header: React.FC<{ title: string }> = (props) => {
+const Header: React.FC<{ title: string, backButton?: boolean }> = (props) => {
     return <Container>
         <LeftSide>
-            <TouchableOpacity>
-                <Icon name="arrowleft" size={25} />
-            </TouchableOpacity>
+            { props.backButton && (
+                <TouchableOpacity>
+                    <Icon name="arrowleft" size={25} />
+                </TouchableOpacity>
+            )}
         </LeftSide>
 
         <Center>

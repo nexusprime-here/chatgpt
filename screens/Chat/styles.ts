@@ -1,3 +1,4 @@
+import { rgba } from "polished";
 import { Platform } from "react-native";
 import styled from "styled-components/native";
 
@@ -12,7 +13,7 @@ export const MessageContainer = styled.View<{ own?: boolean }>`
     align-items: ${p => p.own ? 'flex-end' : 'flex-start'};
     margin-bottom: 18px;
 `;
-export const MessageCloud = styled.View<{ own?: boolean }>`
+export const CloudMessage = styled.View<{ own?: boolean }>`
     max-width: 70%;
     background-color: ${p => p.own ? p.theme.RightBubble : p.theme.LeftBubble};
     border-radius: 25px;
@@ -29,7 +30,7 @@ export const StyledInputContainer = styled.View`
     height: 45px;
     margin: 15px;
     font-size: 15px;
-    border-color: ${p => p.theme.shadow};
+    border-color: ${p => rgba(p.theme.placeholderText, .3)};
     background-color: ${p => p.theme.background2};
     border-radius: 25px;
     border-width: 1px;

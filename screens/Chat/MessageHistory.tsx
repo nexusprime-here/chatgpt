@@ -1,12 +1,12 @@
 import { MessageData } from ".";
-import { MessageCloud, MessageContainer, StyledScrollView, StyledText } from "./styles";
+import { CloudMessage, MessageContainer, StyledScrollView, StyledText } from "./styles";
 
-const CloudMessage: React.FC<{ data: MessageData[] }> = ({ data }) => {
+const CloudMessageGroup: React.FC<{ data: MessageData[] }> = ({ data }) => {
     const isOwnMessage = data[0].author === 'me';
     const mappedData = data.map(data => 
-        <MessageCloud own={isOwnMessage}>
+        <CloudMessage key={crypto.randomUUID()} own={isOwnMessage}>
             <StyledText>{data.value}</StyledText>
-        </MessageCloud>
+        </CloudMessage>
     );
 
     return (
@@ -18,9 +18,7 @@ const CloudMessage: React.FC<{ data: MessageData[] }> = ({ data }) => {
 
 const MessageHistory: React.FC<{ messages: MessageData[] }> = ({ messages }) => {
     const groupedMessages = messages.length > 0 ? groupByAuthor(messages) : [];
-    
-    let keycount = 0;
-    const mappedData = groupedMessages.map(m => <CloudMessage key={++keycount} data={m} />);
+    const mappedData = groupedMessages.map(m => <CloudMessageGroup key={crypto.randomUUID()} data={m} />);
 
     return (
         <StyledScrollView>

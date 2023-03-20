@@ -13,7 +13,8 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
-      Chat: '*',
+      Chat: 'Chat',
+      Menu: '*'
     },
   },
 };

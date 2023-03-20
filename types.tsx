@@ -16,20 +16,18 @@ declare global {
 }
 
 export type RootStackParamList = {
-  Home: undefined;
   Chat: undefined;
-  NotFound: undefined;
+  Menu: undefined;
 };
-
+  
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
   Screen
 >;
 
 export type RootTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
   Chat: undefined;
+  Menu: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
@@ -37,7 +35,10 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   NativeStackScreenProps<RootStackParamList>
 >;
 
-type Color = typeof Colors[keyof typeof Colors];
+type LightTheme = typeof Colors['light'];
+type DarkTheme = typeof Colors['dark'];
+type Themes = { [key in keyof LightTheme]:  LightTheme[key] | DarkTheme[key] }
+
 declare module 'styled-components' {
-  export interface DefaultTheme extends Color {}
+  export interface DefaultTheme extends Themes {}
 }
